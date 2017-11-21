@@ -1,0 +1,44 @@
+<div class="container">
+<h3 class=" fa fa-user center-align teal-text"> YOUR PROFILE</h3><br>
+<ul class="collection">
+  <li class="collection-item avatar">
+    <img src="<%= user.pic_path%>" alt="" class="circle">
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">folder</i>
+    <span class="title">Email de Usuario</span>
+    <p>Su email es: <br>
+       <%= user.email %>
+    </p>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle green">insert_chart</i>
+    <span class="title">Nombre de Usuario</span>
+    <p>Su nombre de usuario es:<br>
+       <%= user.username %>
+    </p>
+  </li>
+</div>
+</ul>
+<br>
+<h5 class="teal-text center-align">Your Pills</h5>
+<div class="container">
+    <ul class="collection">
+    <% pills.forEach((pill) => { %>
+      <li class="collection-item avatar">
+        <h4><%= pill.title %></h4>
+        <i class="material-icons circle yellow">check_box</i>
+        <p>Autor: <%= review.senderName %> </p>
+        <p>Comentario: <%= review.description %></p>
+        <p>Puntuación: <%= review.stars %> estrellas</p>
+      </li>
+      <% }) %>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="center-btn">
+        <a href="../../user/<%= user._id %>/editUser" class="btn btn-success"><span class="fa fa-sign-in"></span>EDITAR MI USUARIO</a><br></br>
+  </div>
+  </div>
+  </div>
