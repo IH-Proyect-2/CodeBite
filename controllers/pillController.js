@@ -5,7 +5,8 @@ module.exports = {
   index: (req, res, next) => {
     Pill.find({}, (err, Pill) => {
       res.render('pills/index', {
-        Pills: Pill,
+        //una en plural y otra en singular?
+        pills: pill,
         user: res.locals.user
       });
     });

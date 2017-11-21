@@ -1,2 +1,26 @@
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+
+<div class="row">
+  <% if (pills.length > 0) { %>
+  <% let i = 0
+  pills.forEach((pill) => { %>
+  <div class="col s12 m6">
+    <div class="card hoverable">
+      <div class="card-image">
+        <a href="/campaign/<%= campaign._id %>/detail" class="btn-floating halfway-fab waves-effect waves-light red"></a>
+      </div>
+      <div class="card-content">
+        <br>
+          <p><b><%= pill.title %></b></p>
+          <p><%= pill.link %></p>
+          <p><%= pill.description %></p>
+          <p><%= pill.category %></p>
+          <p><%= pill.language %></p>
+      </div>
+    </div>
+  </div>
+  <% i++ }) %>
+  <% } else { %>
+      <p><%= user.username %> has no bites yet.</p>
+  <% } %>
+</div>
+</div>

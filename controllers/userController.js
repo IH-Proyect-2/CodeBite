@@ -1,12 +1,13 @@
 const User = require('../models/User');
-const Comment = require('../models/Comment');
+const Pill = require('../models/Pill');
 
+//antes donde pone  ponía reviews
 module.exports = {
   profileGet: (req, res, next) => {
-    Review.find({receiverId: res.locals.user._id}, (err, reviews) => {
+    Pill.find({receiverId: res.locals.user._id}, (err, pills) => {
       res.render('user/profile', {
         user: res.locals.user,
-        comments: commments
+        pills: pills
       });
     });
   },
