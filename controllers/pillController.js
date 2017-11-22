@@ -20,6 +20,8 @@ module.exports = {
     console.log('me entra');
     console.log(res);
     const newPill = new Pill({
+
+      
       title: req.body.title,
       description: req.body.description,
       category: req.body.category,
