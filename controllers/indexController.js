@@ -1,8 +1,13 @@
+const Pills = require ('../models/Pill');
+
 module.exports = {
   index: (req, res, next) => {
-    res.render('index/index', {
-      user: res.locals.user,
-      pills:[1,2,3,4]
-    });
+    Pills.find()
+    .then (resultPills =>
+      res.render('index/index', {
+        user: res.locals.user,
+        pills: resultPills
+      })
+    );
   },
 };
