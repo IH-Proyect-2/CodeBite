@@ -9,7 +9,8 @@ const userSchema = new Schema({
   imageUrl: { type: String},
   role: {enum: ['admin', 'normal']},
   pills: [{type:Schema.Types.ObjectId, ref:'Pill'}],
-  // timestamps: { createdAt: 'created_at', updatedAt: 'updated_at'}
+}, {
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
 
 const User = mongoose.model('User', userSchema);

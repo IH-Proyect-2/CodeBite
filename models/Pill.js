@@ -10,7 +10,7 @@ const pillSchema = new Schema({
   comments: [{type:Schema.Types.ObjectId, ref:'comment'}],
   _creator: {type: String, required: true,}
 }, {
-  // timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
 
 var Pill = mongoose.model('Pill', pillSchema);

@@ -1,14 +1,36 @@
-const app = require('express')();
 require('dotenv').load();
+
+const app = require('express')();
+const indexRoutes = require('./routes/index');
+
 require('./config/passport')();
 require('./config/express')(app);
-require('./config/expresscontroller')(app);
 
-const index = require('./routes/index');
+mongoose.connect(process.env.DB_URL).then(() => {
+  console.log("Connected to db: " + process.env.DB_URL);
+});
 
-app.use('/', index);
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 
+app.use('/', indexRoutes);
 
-require('./config/error-handler')(app);
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error/error');
+});
 
 module.exports = app;
