@@ -30,7 +30,33 @@ module.exports = {
       if (err) {
         return err;
       } else {
-        return res.redirect("/user/profile");
+        return res.redirect("/pill");
+      }
+    });
+  },
+
+  detail: (req, res, next) => {
+    Pill.findById(req.params.id, (err, pill) => {
+      if (err) {
+        console.log(err);
+      }
+      Pill.find({
+        PillId: req.params.id
+      }, (err, comment) => {
+        res.render('pills/detail', {
+          title: 'Pills for Development',
+          pill: pill,
+          user: res.locals.user,
+          comment: comment
+        });
+      });
+    });
+  },
+
+  delete: (req, res, next) => {
+    Pill.findByIdAndRemove(req.params.id, (err, obj) => {
+      if (err) {
+        return next(err);
       }
     });
   },
