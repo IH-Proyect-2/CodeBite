@@ -8,11 +8,11 @@ const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-const config = require('./config');
+// const config = require('./config');
 
 module.exports = function(app){
 
-  app.set('views', config.rootPath+'views');
+  // app.set('views', config.rootPath+'views');
   app.set("view engine", "ejs");
   app.set('layout', 'layout/main-layout');
   app.use(expressLayouts);
@@ -20,7 +20,7 @@ module.exports = function(app){
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(express.static(config.rootPath+'public'));
+  // app.use(express.static(config.rootPath+'public'));
 
   app.use(session({
     secret: 'awesome project bro',

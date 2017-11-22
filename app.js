@@ -2,6 +2,7 @@ require('dotenv').load();
 
 const app = require('express')();
 const indexRoutes = require('./routes/index');
+const mongoose = require('mongoose');
 
 require('./config/passport')();
 require('./config/express')(app);

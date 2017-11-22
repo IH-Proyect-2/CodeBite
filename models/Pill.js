@@ -8,7 +8,7 @@ const pillSchema = new Schema({
   link: {type: String, required: true},
   language: {enum: ['English', 'Spanish']},
   comments: [{type:Schema.Types.ObjectId, ref:'comment'}],
-  _creator: {type: String, required: true,}
+  _creator: {type: String}
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });

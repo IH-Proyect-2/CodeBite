@@ -31,7 +31,7 @@ comments: []
 },
 ];
 
-Pill.create(pill)
+Pill.create(pillData)
 .then(pills => {
 console.log(pills);
 mongoose.connection.close();
