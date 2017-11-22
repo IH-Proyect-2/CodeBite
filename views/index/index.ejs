@@ -1,7 +1,7 @@
 <h1>hola</h1>
 <div class="row">
 
-    <% pills.forEach(pill => { %>
+    <% pills.reverse().forEach(pill => { %>
       <div class="col s12 m6">
         <div class="card hoverable">
           <div class="card-image">
@@ -11,7 +11,7 @@
             <br>
             <p><b><%= pill.title %></b></p>
             <p>
-            <iframe width="560" height="315" src="<%= pill.link %>" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="<%= pill.link %>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
             </p>
             <p>
               <%= pill.description %>

@@ -4,9 +4,9 @@ const Schema   = mongoose.Schema;
 const pillSchema = new Schema({
   title: String,
   description: String,
-  category: {enum: ['AJAX', 'Algorithms', 'Functions']},
+  category: {type: String, enum: ['AJAX', 'Algorithms','Arrays','Async & Callbacks','Canvas','Conditionals & Loops', 'Debugging','DOM','Express','Functions','JQuery','JSON','Libraries','Methods','Mongo','Mongoose','Node','Objects','Passport','Prototype','Testing']},
   link: String,
-  language: {enum: ['English', 'Spanish']},
+  language: {type:String, enum: ['English', 'Spanish']},
   comments: [{type:Schema.Types.ObjectId, ref:'comment'}],
   _creator: String
 }, {
