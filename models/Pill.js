@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const pillSchema = new Schema({
-  title: {type: String, required: true},
-  description: {type: String, required: true},
+  title: String,
+  description: String,
   category: {enum: ['AJAX', 'Algorithms', 'Functions']},
-  link: {type: String, required: true},
+  link: String,
   language: {enum: ['English', 'Spanish']},
   comments: [{type:Schema.Types.ObjectId, ref:'comment'}],
-  _creator: {type: String}
+  _creator: String
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });

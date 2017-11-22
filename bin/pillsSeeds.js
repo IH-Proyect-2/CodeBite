@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/pillsDB', {useMongoClient: true});
+mongoose.connect('mongodb://localhost/pillDB', {useMongoClient: true});
 const Pill = require('../models/pill');
 
 Pill.collection.drop();

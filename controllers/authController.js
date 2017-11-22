@@ -10,7 +10,7 @@ module.exports = {
 
   loginGet: (req, res, next) => { res.render('auth/login'); },
   loginPost: passport.authenticate('local-login', {
-    successRedirect : '/',
+    successRedirect : '/user/profile',
     failureRedirect : '/login'
   }),
 
