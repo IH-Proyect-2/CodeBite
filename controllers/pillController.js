@@ -19,6 +19,8 @@ module.exports = {
   createPost: (req, res, next) => {
 
     const newPill = new Pill({
+
+      
       title: req.body.title,
       description: req.body.description,
       category: req.body.category,
