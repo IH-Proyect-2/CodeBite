@@ -41,9 +41,9 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      Review.find({
+      Pill.find({
         PillId: req.params.id
-      }, (err, review) => {
+      }, (err, comment) => {
         res.render('pills/detail', {
           title: 'Pills for Development',
           pill: pill,
