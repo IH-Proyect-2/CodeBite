@@ -17,13 +17,13 @@ module.exports = {
   },
 
   createPost: (req, res, next) => {
-    console.log('me entra');
-    console.log(res);
+
+    console.log(`https://www.youtube.com/embed/${req.body.link.split('=')[1]}`);
     const newPill = new Pill({
       title: req.body.title,
       description: req.body.description,
       category: req.body.category,
-      link: req.body.link,
+      link: `https://www.youtube.com/embed/${req.body.link.split('=')[1]}`,
       language: req.body.language
     });
 
