@@ -1,7 +1,6 @@
 const User = require('../models/User');
 const Pill = require('../models/Pill');
 
-//antes donde pone  ponía reviews
 module.exports = {
   profileGet: (req, res, next) => {
     Pill.find({receiverId: res.locals.user._id}, (err, pills) => {
@@ -27,8 +26,6 @@ module.exports = {
     let updates = {
       username: req.body.username,
       email: req.body.email,
-      pic_path: `../uploads/${req.file.filename}`,
-      pic_name: req.file.originalname
     };
     User.findByIdAndUpdate(req.params.id, updates, (err, result) => {
       if (err) {
