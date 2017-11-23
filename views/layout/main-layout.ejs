@@ -3,50 +3,58 @@
   <head>
     <meta charset="utf-8">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="stylesheets/materialize.min.css"  media="screen,projection"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css"  href="/stylesheets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
   </head>
   <body>
     <% if(user) { %>
+   <div class="navbar-fixed">
     <nav class="white" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="/" class="brand-logo teal-text"><img style="width:75px; margin-top:7px;" src="/images/logo.png" alt="Logo Code Bites"></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/">Home</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/user/profile">Profile</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-          <li><a class="waves-effect waves-light btn" href="/logout">Logout</a></li>
-        </ul>
+        <!-- <a id="logo-container" href="/" class="brand-logo">Code Bites</a> -->
+        <a id="logo-container" href="/" class="brand-logo red-text"><img style="width:240px; margin-top:15px;" src="../images/logo.png" alt="Logo Code Bites"></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li><a href="/user/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+
  <!-- Mobile Navigation -->
-        <!-- <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="side-nav">
           <li><a href="/">Home</a></li>
           <li><a href="/user/profile">Profile</a></li>
           <li><a href="/auth/logout">Logout</a></li>
         </ul>
-      </div> -->
+      </div>
     </nav>
+  </div>
+
 <% } else { %>
     <nav class="white" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="/" class="brand-logo teal-text">Code Bites</a>
+        <a id="logo-container" href="/" class="brand-logo red-text">Code Bites</a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="waves-effect waves-light btn" href="/signup">Sign Up</a></li>
+          <li><a class="waves-effect waves-light btn red darken-1" href="/signup">Sign Up</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
           <li><a href="/login">Log in</a></li>
         </ul>
 
-        <!-- <ul id="nav-mobile" class="side-nav">
+        <ul id="nav-mobile" class="side-nav">
           <li><a href="/auth/login">Log in</a></li>
-          <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
+          <li><a class="waves-effect waves-light btn red darken-1" href="/auth/signup">Sign Up</a></li>
         </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a> -->
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
     </nav>
 <% } %>
     <%- body %>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
   </body>
 </html>

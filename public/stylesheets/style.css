@@ -1,8 +1,57 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  font: 14px "Roboto", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #7a7a7a;
+}
+
+a:hover {
+  color: #fc0d1c;
+}
+
+nav ul a,
+nav .brand-logo {
+  color: #fc0d1c;
+}
+
+hr {
+ border-top: 1px solid #bababa;
+}
+
+}
+.hidden {
+  display: none;
+}
+
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.side-menu {
+  background-color: #f7f7f7;
+  color: #fc0d1c;
+  margin-top: 2px;
+  padding: 15px;
+  width: 165px;
+  position: fixed;
+}
+
+.video-section {
+  padding-left: 220px;
+}
+
+a.btn:hover {
+ background-color: white !important;
 }

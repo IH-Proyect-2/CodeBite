@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 
 module.exports = function(app){
 
-  // app.set('views', config.rootPath+'views');
+  app.set('views', path.join(__dirname, '../views'));
   app.set("view engine", "ejs");
   app.set('layout', 'layout/main-layout');
   app.use(expressLayouts);
@@ -20,7 +20,7 @@ module.exports = function(app){
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
-  // app.use(express.static(config.rootPath+'public'));
+  app.use(express.static(path.join(__dirname, '../public')));
 
   app.use(session({
     secret: 'awesome project bro',

@@ -36,15 +36,7 @@ module.exports = {
       })
       .catch(err => next (err));
     },
-    // newPill.save((err) => {
-    //   if (err) {
-    //   return next (err);
-    //   }
-    //   user._id.pills.push(newPill);
-    //     res.redirect("/user/profile");
-    //   });
-    // }
-
+  
 
   // detail: (req, res, next) => {
   //   Pill.findById(req.params.id, (err, pill) => {
@@ -91,15 +83,15 @@ module.exports = {
   //   });
   // },
   //
-  // delete: (req, res, next) => {
-  //   Pill.findByIdAndRemove(req.params.id, (err, obj) => {
-  //     if (err) {
-  //       return next(err);
-  //     }
-  //     res.redirect("/pill");
-  //   });
-  // },
-  //
+  delete: (req, res, next) => {
+    Pill.findByIdAndRemove(req.params.id, (err, obj) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/user/profile");
+    });
+  },
+
   editGet: (req, res, next) => {
     Pill.findById(req.params.id, (err, pill) => {
       if (err) {
@@ -128,8 +120,6 @@ module.exports = {
     });
   },
 
-  // const { title, description, category, language } = req.body;
-  // const updates = { title, description, category, language };
 
 
   // requestPost: (req, res, next) => {
