@@ -16,8 +16,17 @@ nav .brand-logo {
   color: #fc0d1c;
 }
 
+.teal-text{
+  color: #E33B3B !important;
+}
+
 hr {
  border-top: 1px solid #bababa;
+}
+
+.auth {
+  padding: 64px 16%;
+
 }
 
 }
