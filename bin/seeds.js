@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/pillsDB', {useMongoClient: true});
+mongoose.connect('mongodb://localhost/pillDB', {useMongoClient: true});
 const User = require('../models/user');
 
 User.collection.drop();
@@ -10,14 +10,14 @@ const userData = [
 email: 'yuremarc@gmail.com',
 password: 'perromalo',
 pills: [],
-role: admin
+role: 'admin'
 },
 
 {username: 'Fran Rom',
 email: 'maildefranz@gmail.com',
 password: '1234',
 pills: [],
-role: admin
+role: 'admin'
 },
 
 ];

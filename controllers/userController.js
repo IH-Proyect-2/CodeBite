@@ -3,10 +3,11 @@ const Pill = require('../models/Pill');
 
 module.exports = {
   profileGet: (req, res, next) => {
-    Pill.find({receiverId: res.locals.user._id}, (err, pills) => {
-      res.render('user/profile', {
-        user: res.locals.user,
-        pills: pills
+  User.findById(res.locals.user._id)
+  .populate('pills')
+  .then(user => {
+    res.render('user/profile', {
+      user: user,
       });
     });
   },

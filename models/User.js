@@ -5,9 +5,7 @@ const userSchema = new Schema({
   username: { type: String, required: true},
   email: { type: String, required: true},
   password: { type: String, required: true},
-  about: { type: String},
-  imageUrl: { type: String},
-  role: {enum: ['admin', 'normal']},
+  role: {type: String, enum: ['admin', 'normal']},
   pills: [{type:Schema.Types.ObjectId, ref:'Pill'}],
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }

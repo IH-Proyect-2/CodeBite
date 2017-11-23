@@ -7,29 +7,36 @@
   <li class="collection-item avatar">
     <p>Name: <%= user.username %> </p>
   </li>
+  <div class="center-btn">
+    <a href="../../user/<%= user._id %>/editUser" class="btn btn-success"></span>EDIT PROFILE</a><br></br>
+  </div>
 </div>
 </ul>
 <br>
-<h5 class="teal-text center-align">Your Pills</h5>
+<h3 class="teal-text center-align">Your Pills</h3>
 <div class="container">
-    <ul class="collection">
-    <% pills.forEach((pill) => { %>
-      <li class="collection-item avatar">
-        <h4><%= pill.title %></h4>
-        <p>Description: <%= pill.description %> </p>
-        <p>link: <%= pill.link %></p>
-        <p>Comments: <%= pill.comments %></p>
-      </li>
-      <% }) %>
-        </ul>
+  <% user.pills.reverse().forEach(pill => { %>
+    <h2><%= pill.title %></h2>
+    <p>
+    <iframe width="560" height="315" src="<%= pill.link %>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+    </p>
+    <p>
+      <%= pill.description %>
+    </p>
+    <p>
+      <%= pill.category %>
+    </p>
+    <p>
+      <%= pill.language %>
+    </p>
+    <a href="/pill/<%= pill._id %>/update"><button>Edit Pill</button></a>
+    <% }) %>
       </div>
     </div>
     <div class="container">
-      <div class="center-btn"> 
+      <div class="center-btn">
         <a href="../../pill/create" class="btn btn-success"></span>ADD PILL</a><br></br>
       </div>
-      <div class="center-btn">
-        <a href="../../user/<%= user._id %>/editUser" class="btn btn-success"></span>EDIT PROFILE</a><br></br>
-      </div>
+
     </div>
   </div>

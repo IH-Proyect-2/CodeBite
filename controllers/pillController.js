@@ -1,11 +1,11 @@
 const Pill = require('../models/Pill');
+const User = require('../models/User');
 const Comment = require('../models/Comment');
 
 module.exports = {
   index: (req, res, next) => {
     Pill.find({}, (err, Pill) => {
       res.render('pills/index', {
-        //una en plural y otra en singular?
         pills: pill,
         user: res.locals.user
       });
@@ -17,10 +17,8 @@ module.exports = {
   },
 
   createPost: (req, res, next) => {
-
+    console.log(req.body);
     const newPill = new Pill({
-
-      
       title: req.body.title,
       description: req.body.description,
       category: req.body.category,
@@ -28,66 +26,52 @@ module.exports = {
       language: req.body.language
     });
 
-    newPill.save((err) => {
-      if (err) {
-        return err;
-      } else {
-        return res.redirect("/pill");
-      }
-    });
-  },
 
-  detail: (req, res, next) => {
-    Pill.findById(req.params.id, (err, pill) => {
-      if (err) {
-        console.log(err);
-      }
-      Pill.find({
-        PillId: req.params.id
-      }, (err, comment) => {
-        res.render('pills/detail', {
-          title: 'Pills for Development',
-          pill: pill,
-          user: res.locals.user,
-          comment: comment
-        });
-      });
-    });
-  },
+    newPill.save()
+      .then(pill => {
+        User.findByIdAndUpdate(req.user._id,
+        {$push: { "pills": pill._id}}, {new: true})
+        .then(res.redirect("/user/profile"));
 
-  delete: (req, res, next) => {
-    Pill.findByIdAndRemove(req.params.id, (err, obj) => {
-      if (err) {
-        return next(err);
-      }
-    });
-  },
+      })
+      .catch(err => next (err));
+    },
+    // newPill.save((err) => {
+    //   if (err) {
+    //   return next (err);
+    //   }
+    //   user._id.pills.push(newPill);
+    //     res.redirect("/user/profile");
+    //   });
+    // }
 
-  detail: (req, res, next) => {
-    Pill.findById(req.params.id, (err, pill) => {
-      if (err) {
-        console.log(err);
-      }
-      Pill.find({
-        PillId: req.params.id
-      }, (err, comment) => {
-        res.render('pills/detail', {
-          title: 'Pills for Development',
-          pill: pill,
-          user: res.locals.user,
-          comment: comment
-        });
-      });
-    });
-  },
 
-  delete: (req, res, next) => {
-    Pill.findByIdAndRemove(req.params.id, (err, obj) => {
-      if (err) {
-        return next(err);
-      }
-    });
-  },
+  // detail: (req, res, next) => {
+  //   Pill.findById(req.params.id, (err, pill) => {
+  //     if (err) {
+  //       console.log(err);
+  //     }
+  //     Pill.find({
+  //       PillId: req.params.id
+  //     }, (err, comment) => {
+  //       res.render('pills/detail', {
+  //         title: 'Pills for Development',
+  //         pill: pill,
+  //         user: res.locals.user,
+  //         comment: comment
+  //       });
+  //     });
+  //   });
+  // },
+  //
+  // delete: (req, res, next) => {
+  //   Pill.findByIdAndRemove(req.params.id, (err, obj) => {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //   });
+  // },
+
 
   // detail: (req, res, next) => {
   //   Pill.findById(req.params.id, (err, pill) => {
@@ -116,29 +100,38 @@ module.exports = {
   //   });
   // },
   //
-  // editGet: (req, res, next) => {
-  //   Pill.findById(req.params.id, (err, pill) => {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-  //     res.render('pills/update', {
-  //       title: 'Pills everyday',
-  //       pill: pill
-  //     });
-  //   });
-  // },
-  //
-  // editPost: (req, res, next) => {
-  //   const { title, description, category, language } = req.body;
-  //   const updates = { title, description, category, language };
-  //   Pill.findByIdAndUpdate(req.params.id, updates, (err, result) => {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-  //     res.redirect(`/pill/${result._id}/detail`);
-  //   });
-  // },
-  //
+  editGet: (req, res, next) => {
+    Pill.findById(req.params.id, (err, pill) => {
+      if (err) {
+        console.log(err);
+      }
+      res.render('pills/update', {
+        title: 'Pills everyday',
+        pill: pill
+      });
+    });
+  },
+
+  editPost: (req, res, next) => {
+    const updates = {
+      title: req.body.title,
+      description: req.body.description,
+      category: req.body.category,
+      language: req.body.language
+    };
+
+    Pill.findByIdAndUpdate(req.params.id, updates, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+     res.redirect('/user/profile');
+    });
+  },
+
+  // const { title, description, category, language } = req.body;
+  // const updates = { title, description, category, language };
+
+
   // requestPost: (req, res, next) => {
   //   if (req.body.requestPill == 'on') {
   //     const updates = {
