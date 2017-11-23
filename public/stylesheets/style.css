@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+p {
+  color:red;
+}
+
+h1{
+  background-color: red;
+}
+
+.hidden {
+  display: none;
+}

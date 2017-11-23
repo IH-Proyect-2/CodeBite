@@ -1,17 +1,57 @@
-<h1>hola</h1>
-<div class="row">
 
-    <% pills.reverse().forEach(pill => { %>
-      <div class="col s12 m6">
-        <div class="card hoverable">
-          <div class="card-image">
-            <a href="/pills/<%= pill._id %>/detail" class="btn-floating halfway-fab waves-effect waves-light red"></a>
-          </div>
-          <div class="card-content">
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
+
+
+<h1>hola</h1>
+
+<ul class="list">
+ <li><a href="#">All</a></li>
+ <li><a href="#">AJAX</a></li>
+ <li><a href="#">Arrays</a></li>
+ <li><a href="#">Async & Callbacks</a></li>
+ <li><a href="#">Algorithms</a></li>
+ <li><a href="#">Canvas</a></li>
+ <li><a href="#">Conditionals & Loops</a></li>
+ <li><a href="#">Debugging</a></li>
+ <li><a href="#">DOM</a></li>
+ <li><a href="#">Express</a></li>
+ <li><a href="#">Functions</a></li>
+ <li><a href="#">JQuery</a></li>
+ <li><a href="#">JSON</a></li>
+ <li><a href="#">Libraries</a></li>
+ <li><a href="#">Methods</a></li>
+ <li><a href="#">Mongo</a></li>
+ <li><a href="#">Mongoose</a></li>
+ <li><a href="#">Node</a></li>
+ <li><a href="#">Objects</a></li>
+ <li><a href="#">Packages</a></li>
+ <li><a href="#">Prototype</a></li>
+ <li><a href="#">Passport</a></li>
+ <li><a href="#">Testing</a></li>
+</ul>
+  <br><br>
+  <label>Language</label><br>
+  <select name="language">
+ <option value="English">English</option>
+ <option value="Spanish">Spanish</option>
+</select>
+  <button class="btn waves-effect waves-light" type="submit" name="action">FILTER
+</button>
+  <br>
+</form>
+<div class="row">
+  <% pills.reverse().forEach(pill => { %>
+    <div class="col s12 m6">
+      <div class="card hoverable">
+        <div class="card-image">
+          <a href="/pills/<%= pill._id %>/detail" class="btn-floating halfway-fab waves-effect waves-light red"></a>
+        </div>
+        <div class="filter card-content">
+          <div class="<%= pill.category %>">
             <br>
             <h2><%= pill.title %></h2>
             <p>
-            <iframe width="560" height="315" src="<%= pill.link %>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+              <iframe width="560" height="315" src="<%= pill.link %>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
             </p>
             <p>
               <%= pill.description %>
@@ -25,7 +65,52 @@
           </div>
         </div>
       </div>
-      <% }) %>
+    </div>
+    <% }) %>
 
 </div>
 </div>
+<script type='text/javascript'>
+$(document).ready(function(){
+    $('ul.list li a').click(function() {
+    var filterText = $(this).text().replace(/\s/g,"-");
+    if(filterText == 'All')
+    {
+        $('div.filter div.hidden').fadeIn('slow').removeClass('hidden');
+    }
+    else
+    {
+        $('.filter div').each(function()
+        {
+            if(!$(this).hasClass(filterText))
+            {
+                $(this).fadeOut('normal').addClass('hidden');
+            }
+            else
+            {
+                $(this).fadeIn('slow').removeClass('hidden');
+            }
+        });
+    }
+    return false;
+    });
+});
+
+//     $('ul.list li a').click(function() {
+//     var filterText = $(this).text().replace(/\s/g,"-");
+//     console.log(filterText)
+//     if(filterText == 'All')
+//     {
+//         $('div.filter div.hidden').fadeIn('slow').removeClass('hidden');
+//     }
+//
+//         $('.filter div').each(function(){
+//             if(!$(this).hasClass(filterText)){
+//                 console.log($(this)[0])
+//                 $(this).addClass('hidden');
+//             }
+//
+//         });
+//     });
+// });
+</script>
