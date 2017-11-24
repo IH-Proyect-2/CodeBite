@@ -57,10 +57,35 @@ hr {
   position: fixed;
 }
 
+.side-profile {
+  margin-top: 2px;
+  padding: 15px;
+  width: 250px;
+  position: fixed;
+}
+
 .video-section {
   padding-left: 220px;
 }
 
+.pro-video-section {
+  padding-left: 100px;
+}
+
 a.btn:hover {
  background-color: white !important;
+}
+
+.collection .collection-item.avatar {
+
+ padding-left: 10px;
+
+}
+
+.full {
+  display: list-item;
+}
+
+select {
+  display: inherit;
 }

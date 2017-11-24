@@ -21,6 +21,10 @@ module.exports = function(app){
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, '../public')));
+  
+  app.use('/vendor/jquery', express.static(path.join(__dirname, '../node_modules/jquery/dist')));
+  app.use('/vendor/materialize', express.static(path.join(__dirname, '../node_modules/materialize-css/dist')));
+  app.use('/vendor/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist')));
 
   app.use(session({
     secret: 'awesome project bro',

@@ -1,45 +1,68 @@
-<div class="container">
-<h3 class=" fa fa-user center-align teal-text"> YOUR PROFILE</h3><br>
-<ul class="collection">
-  <li class="collection-item avatar">
-    <p>Email: <%= user.email %></p>
-  </li>
-  <li class="collection-item avatar">
-    <p>Name: <%= user.username %> </p>
-  </li>
-  <button class="btn waves-effect waves-light red darken-1 center" type="submit" name="action" value="Submit">Edit Profile
-</button>
+<div class="container side-profile">
+
+   <ul class="collection">
+    <li class="collection-item avatar">
+     <h4 class=" fa fa-user teal-text">Profile</h4><br>
+    </li>
+    <li class="collection-item avatar">
+     <br>
+      <p>Name: <br>
+        <b><%= user.username %></b>
+      </p>
+       <br>
+    </li>
+   <li class="collection-item avatar">
+   <br>
+    <p>Email:
+      <b><%= user.email %></b>
+    </p>
+     <br>
+    </li>
+   <div class="center-btn">
+      <a href="../../user/<%= user._id %>/editUser" class="btn btn-success red darken-1 full"></span>EDIT</a>
+   </div>
+  <br><br>
   <div class="center-btn">
-    <a href="../../user/<%= user._id %>/editUser" class="btn btn-success"></span>EDIT PROFILE</a><br></br>
+    <a href="../../pill/create" class="btn btn-success red darken-1 full"></span>ADD VIDEO</a>
   </div>
-</div>
+ </div>
 </ul>
 <br>
-<h3 class="teal-text center-align">Your Pills</h3>
-<div class="container">
-  <% user.pills.reverse().forEach(pill => { %>
-    <h2><%= pill.title %></h2>
-    <p>
-    <iframe width="560" height="315" src="<%= pill.link %>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-    </p>
-    <p>
-      <%= pill.description %>
-    </p>
-    <p>
-      <%= pill.category %>
-    </p>
-    <p>
-      <%= pill.language %>
-    </p>
-    <a href="/pill/<%= pill._id %>/update"><button>Edit Video</button></a>
-    <a href="/pill/<%= pill._id %>/delete"><button>Delete Video</button></a>
-    <% }) %>
+<div class="pro-video-section">
+  <div class="row video-section">
+  <% if (user.pills.length > 0) { %>
+    <% user.pills.reverse().forEach(pill => { %>
+      <div class="col s12 m9">
+          <div class="filter">
+            <div class="<%= pill.category %>">
+              <p class="video-responsive">
+               <iframe width="560" height="315" src="<%= pill.link %>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+              </p>
+              <h5><%= pill.title %></h5>
+              <h6 style="color: grey" ><%= pill.category %> - <%= pill.language %></h6>
+              <hr>
+              <p>
+                <%= pill.description %>
+              </p>
+              <br>
+              <a href="/pill/<%= pill._id %>/update"><button class="btn btn-success red darken-1">Edit Video</button></a>
+              <a href="/pill/<%= pill._id %>/delete"><button class="btn btn-success red darken-1">Delete Video</button></a>
+              <br><br>
+            </div>
+          </div>
+      </div>
+      <% }) %>
+      <% } else { %>
+    <div>
+      <br><br>
+      <h5><%= user.username %>, you aren't posted videos yet.</h5>
+      <br><br>
+      <div class="container">
+        <a href="../../pill/create" class="btn btn-success red darken-1"></span>ADD VIDEO</a>
       </div>
     </div>
-    <div class="container">
-      <div class="center-btn">
-        <a href="../../pill/create" class="btn btn-success"></span>ADD VIDEO</a><br></br>
-      </div>
+  <% } %>
+    <br><br>
+    </div>
 
-    </div>
-  </div>
+</div>
