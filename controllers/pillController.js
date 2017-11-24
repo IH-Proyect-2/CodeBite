@@ -26,7 +26,8 @@ module.exports = {
       language: req.body.language
     });
 
-
+    console.log(newPill);
+    
     newPill.save()
       .then(pill => {
         User.findByIdAndUpdate(req.user._id,
@@ -36,7 +37,7 @@ module.exports = {
       })
       .catch(err => next (err));
     },
-  
+
 
   // detail: (req, res, next) => {
   //   Pill.findById(req.params.id, (err, pill) => {
