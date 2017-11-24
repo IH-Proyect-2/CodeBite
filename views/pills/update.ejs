@@ -3,15 +3,15 @@
 <div class="container">
   <form id="form" action="/pill/<%= pill._id %>/update" method="POST">
     <label>Title</label><br>
-    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="title" value="<%= pill.title %>">
     <br><br>
     <label>Description</label><br>
-    <input type="text" name="description" placeholder="Description">
+    <input type="text" name="description" value="<%= pill.description %>">
     <br><br>
     <div class="row">
       <div class="col s5">
        <label>Category</label><br>
-           <select name="category">
+           <select name="category" value="<%= pill.category %>">
           <option value="AJAX">AJAX</option>
           <option value="Arrays">Arrays</option>
           <option value="Async & Callbacks">Async & Callbacks</option>
@@ -39,7 +39,7 @@
     <div class="col s2"></div>
     <div class="col s5">
     <label>Language</label><br>
-    <select name="language">
+    <select name="language" value="<%= pill.language %>">
      <option value="English">English</option>
      <option value="Spanish">Spanish</option>
     </select>
