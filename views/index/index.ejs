@@ -1,5 +1,5 @@
+<script src='/javascripts/search.js'></script>
 
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
 
 <div class="side-menu z-depth-3">
   <h5>Categories</h5>
@@ -38,7 +38,7 @@
   <% pills.reverse().forEach(pill => { %>
     <div class="col s12 m9">
         <div class="filter">
-          <div class="<%= pill.category %>">
+          <div class="<%= pill.category %> <%= pill.language %>">
             <p class="video-responsive">
              <iframe width="560" height="315" src="<%= pill.link %>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
             </p>
@@ -55,31 +55,3 @@
     <% }) %>
   <br><br>
   </div>
-
-<script type='text/javascript'>
-$(document).ready(function(){
-    $('ul.list li a').click(function() {
-    var filterText = $(this).text().replace(/\s/g,"-");
-    if(filterText == 'All')
-    {
-        $('div.filter div.hidden').fadeIn('slow').removeClass('hidden');
-    }
-    else
-    {
-        $('.filter div').each(function()
-        {
-            if(!$(this).hasClass(filterText))
-            {
-                $(this).fadeOut('normal').addClass('hidden');
-            }
-            else
-            {
-                $(this).fadeIn('slow').removeClass('hidden');
-            }
-        });
-    }
-    return false;
-    });
-});
-
-</script>
