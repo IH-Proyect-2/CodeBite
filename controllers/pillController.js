@@ -18,6 +18,7 @@ module.exports = {
 
   createPost: (req, res, next) => {
     console.log(req.body);
+
     const newPill = new Pill({
       title: req.body.title,
       description: req.body.description,
@@ -27,7 +28,7 @@ module.exports = {
     });
 
     console.log(newPill);
-    
+
     newPill.save()
       .then(pill => {
         User.findByIdAndUpdate(req.user._id,
